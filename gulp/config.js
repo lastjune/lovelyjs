@@ -47,9 +47,9 @@ module.exports = {
         // A separate bundle will be generated for each
         // bundle config in the list below
         bundleConfigs: [{
-            entries: [src + '/scripts/main.js'],
-            dest: dest + '/scripts/',
-            outputName: 'app.js'
+            entries: [src + '/lv.js'],
+            dest: dest + '/',
+            outputName: 'lv.es5.js'
         }]
     },
     rev: {
