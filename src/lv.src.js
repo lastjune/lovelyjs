@@ -6,17 +6,20 @@
  * @author Timiz Qi
  * @date 2016年1月4日 星期一
  */
-export let lv = {
-    // 判断n是否为素数
+export var lv =()=> {
+    argToArray(arg){
+        return (arg.length===1?[arg[0]]:[].apply(null,arguments))||[];
+    };
+    //mixin
+    mixin(target,source){
+        //todo
+    };
     isPrime(n) {
-        if(n===void 0){
-            throw 'No input.';
-        }
-        if (typeof Number(n) !== 'number') {
+        if (typeof Number(n) !== 'number'||n===void 0) {
             throw 'The stdin is NaN.';
         }
         return n < 2 ? false : !/^(11+?)\1+$/.test(Array(n + 1).join('1'));
-    },
+    };
     //sort an array by the reg expression or default by number
     sortByReg(arr, reg) {
         var defaultReg = /\d/;
@@ -26,12 +29,12 @@ export let lv = {
         return arr.sort(function(a, b) {
             return a.match(defaultReg) - b.match(defaultReg);
         });
-    },
+    };
     //reflection of the function parameter list
     getParams(func) {
         var fnStr = func.toString().replace(/((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg, '');
         return fnStr.slice(fnStr.indexOf('(') + 1, fnStr.indexOf(')')).match(/([^\s,]+)/g) || [];
-    },
+    };
     //delegateFunc
     delegateFunc(func,params){
         if (!params) return func;
@@ -42,5 +45,5 @@ export let lv = {
         };
         f.getParams = function () { return paramNames; };
         return f;
-    }
+    };
 };
