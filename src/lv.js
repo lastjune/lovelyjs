@@ -6,7 +6,7 @@
  * @author Timiz Qi
  * @date 2016年1月4日 星期一
  */
-export {
+module.exports={
     argToArray(arg) {
             return (arg.length === 1 ? [arg[0]] : [].apply(null, arguments)) || [];
         },
@@ -63,9 +63,29 @@ export {
                     }
                 }
                 if (min !== i) {
-                    let temp=ary[min];
-                    ary[min]=ary[i];
-                    ary[i]=temp;
+                    let temp = ary[min];
+                    ary[min] = ary[i];
+                    ary[i] = temp;
+                }
+            }
+            return ary;
+        },
+        insertionSort(ary) {
+            var aLen = ary.length;
+
+            if (aLen < 2) {
+                return ary;
+            }
+            for (var i = 1; i < aLen; ++i) {
+                console.log(`i is ${i}`)
+                var j = i;
+                var value = ary[i];
+                while (j > 0 && ary[j - 1] > value) {
+                    ary[j] = ary[j - 1];
+                    --j;
+                }
+                if (j !== i) {
+                    ary[j] = value;
                 }
             }
             return ary;
